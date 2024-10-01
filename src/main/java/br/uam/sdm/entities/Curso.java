@@ -1,8 +1,5 @@
 package br.uam.sdm.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -10,13 +7,10 @@ import java.util.Objects;
  *
  * @author Joao Rodolfo
  */
-
-@Entity
-@Table(name = "tb_curso")
 public class Curso implements Serializable {
     private static final long serialVersionUID = 1L;
    
-    @Id
+    private Long id;
     private String cod_curso;
     private String nome_curso;
     
@@ -24,9 +18,18 @@ public class Curso implements Serializable {
         
     }
 
-    public Curso(String cod_curso, String nome_curso) {
+    public Curso(Long id, String cod_curso, String nome_curso) {
+        this.id = id;
         this.cod_curso = cod_curso;
         this.nome_curso = nome_curso;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getCod_curso() {
@@ -47,8 +50,8 @@ public class Curso implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 47 * hash + Objects.hashCode(this.cod_curso);
+        int hash = 5;
+        hash = 97 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
@@ -64,7 +67,7 @@ public class Curso implements Serializable {
             return false;
         }
         final Curso other = (Curso) obj;
-        return Objects.equals(this.cod_curso, other.cod_curso);
+        return Objects.equals(this.id, other.id);
     }
     
     

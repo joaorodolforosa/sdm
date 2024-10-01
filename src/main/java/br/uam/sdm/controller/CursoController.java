@@ -12,12 +12,12 @@ import org.springframework.web.bind.annotation.RestController;
  */
 
 @RestController
-@RequestMapping(value = "cursos")
+@RequestMapping(value = "/cursos")
 public class CursoController {
     
     @GetMapping
 	public ResponseEntity<Curso> findAll() {
-		Curso c = new Curso("SDM", "Sistemas Distribuidos e Mobile");
+		Curso c = new Curso(1L, "es", "Engenharia de Software");
 		return ResponseEntity.ok().body(c);
 	}
     
