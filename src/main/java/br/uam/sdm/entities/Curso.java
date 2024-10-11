@@ -1,11 +1,15 @@
 package br.uam.sdm.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -23,6 +27,10 @@ public class Curso implements Serializable {
     private Long id;
     private String cod_curso;
     private String nome_curso;
+    
+    @JsonIgnore
+    @OneToMany(mappedBy = "curso")
+    private List<Aluno> alunos = new ArrayList<>();
 
     public Curso() {
 
@@ -58,6 +66,10 @@ public class Curso implements Serializable {
         this.nome_curso = nome_curso;
     }
 
+    public List<Aluno> getAlunos() {
+        return alunos;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 5;
