@@ -35,4 +35,15 @@ public class CursoService {
         repository.deleteById(id);
     }
     
+    public Curso update(Long id, Curso obj) {
+        Curso entity = repository.getReferenceById(id);
+        updateData(entity, obj);
+        return repository.save(entity);
+    }
+
+    private void updateData(Curso entity, Curso obj) {
+        entity.setCod_curso(obj.getCod_curso());
+        entity.setNome_curso(obj.getNome_curso());
+    }
+    
 }
