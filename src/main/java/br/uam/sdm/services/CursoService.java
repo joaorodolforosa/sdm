@@ -27,5 +27,8 @@ public class CursoService {
         return obj.get();
     }
     
+    public Curso insert(Curso obj) {
+        return repository.save(obj);
+    }
     
 }
